@@ -1,22 +1,36 @@
+//El siguiente codigo permite el arrastre de imagenes, con cambio de ordenamiento
+// en los contenedores.
+
 const images = document.querySelectorAll(".image");
 const spaces = document.querySelectorAll(".space");
 
-images.forEach((image) => {
-  image.addEventListener("dragstart", dragStart);
-});
+let spacesOrder = ["space1", "space2", "space3", "space4"];
+spacesOrder.sort(() => Math.random() - 0.5);
 
-spaces.forEach((space) => {
+spaces.forEach((space, index) => {
+  space.id = spacesOrder[index];
   space.addEventListener("dragover", dragOver);
   space.addEventListener("dragenter", dragEnter);
   space.addEventListener("dragleave", dragLeave);
   space.addEventListener("drop", drop);
 });
 
+images.forEach((image) => {
+  const randomIndex = Math.floor(Math.random() * spacesOrder.length);
+  const spaceId = spacesOrder[randomIndex];
+  spacesOrder.splice(randomIndex, 1);
+  const space = document.getElementById(spaceId);
+
+  image.addEventListener("dragstart", dragStart);
+  image.setAttribute("draggable", "true");
+  image.setAttribute("data-space", spaceId);
+});
+
 function dragStart(event) {
   console.log("dragStart: ", event.target.id);
   event.dataTransfer.setData("text/plain", event.target.id);
   setTimeout(() => {
-    event.target.classList.add('hide');
+    event.target.classList.add("hide");
   }, 0);
 }
 
@@ -24,20 +38,6 @@ function dragOver(event) {
   console.log("dragOver: ", event.target.id);
   event.preventDefault();
 }
-
-function onDragEnter(event) {
-    event.preventDefault();
-    let space = event.target;
-    if (space === null) {
-      space = event.currentTarget;
-    }
-    console.log(space); // Agrega esta línea para imprimir el elemento seleccionado
-    if (space.id && isSpaceValid(space, currentDraggingImage)) { // Agrega esta verificación adicional
-      space.classList.add("drag-over");
-    } else {
-      space.classList.add("invalid-space");
-    }
-  }
 
 function dragEnter(event) {
   console.log("dragEnter: ", event.target.id);
@@ -76,16 +76,16 @@ function drop(event) {
 }
 
 function isSpaceValid(space, img) {
-    if (!space) {
-      return false;
-    }
-    console.log("isSpaceValid: ", space?.id, img?.id);
-    const validSpaces = {
-      "space1": ["img1"],
-      "space2": ["img2"],
-      "space3": ["img3"],
-      "space4": ["img4"],
-    };
-    const validImageIds = validSpaces[space.id];
-    return validImageIds.includes(img?.id);
+  if (!space) {
+    return false;
   }
+  console.log("isSpaceValid: ", space?.id, img?.id);
+  const validSpaces = {
+    space1: ["img1"],
+    space2: ["img2"],
+    space3: ["img3"],
+    space4: ["img4"],
+  };
+  const validImageIds = validSpaces[space.id];
+  return validImageIds.includes(img?.id);
+}
