@@ -1,4 +1,8 @@
-.container {
+body{
+  padding: 10px;
+}
+
+.containerr {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -6,12 +10,17 @@
   padding: 1rem;
   border: 1px solid black;
   margin-bottom: 1rem;
-  width: 55%;
+  width: 60%;
   margin: 0 auto;
 }
 .container > div {
   display: flex;
   flex-direction: column;
+}
+
+.colap {
+  width: 70%;
+  margin: 0 auto;
 }
 
 .image {
