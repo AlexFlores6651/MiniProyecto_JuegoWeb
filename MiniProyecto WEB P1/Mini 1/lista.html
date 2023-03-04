@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Lista de usuarios</title>
+  </head>
+  <link rel="stylesheet" href="CSS/estilos.css">
+  <script src="JS/lista.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <body>
+    <section class="container">
+      <div class="video-container">
+        <video src="Multimedia/y2mate.com - pixel anime relax_360p.mp4" autoplay muted loop></video>
+    </div>
+    <div class="contenedor">
+      <form id="registro-form">
+        <label for="username">Nombre de usuario:</label>
+        <input type="text" id="username">
+        <button type="submit" onclick="guardarDatos()">Agregar usuario</button>
+      </form>
+    </div>
+    <ul id="user-list">
+      <!-- La lista se generará aquí -->
+    </ul>
+    </section>
+    
+   
+
+    <script>
+      function guardarDatos() {
+        const nombre = document.getElementById("username").value;
+      
+        localStorage.setItem("username", nombre);
+      
+        swal({
+          title: `¡Bienvenido, ${nombre}!`,
+          timer: 10000, // 3000 milisegundos = 3 segundos
+          showConfirmButton: true
+        });
+      }
+      // Función para agregar un usuario a la lista y actualizar el localStorage
+      function addUser(username) {
+        // Obtenemos la lista de usuarios del localStorage
+        const userList = JSON.parse(localStorage.getItem('users')) || [];
+
+        // Agregamos el nuevo usuario a la lista
+        userList.push(username);
+
+        // Actualizamos la lista en el localStorage
+        localStorage.setItem('users', JSON.stringify(userList));
+
+        // Generamos la lista HTML actualizada y la insertamos en la página
+        const userHTML = userList.map((user) => `<li>${user}</li>`).join('');
+        document.getElementById('user-list').innerHTML = userHTML;
+      }
+
+      // Agregamos un listener al formulario para capturar el evento submit
+      const form = document.querySelector('form');
+      form.addEventListener('submit', (event) => {
+        event.preventDefault(); // Evitamos que se recargue la página al enviar el formulario
+        const username = document.getElementById('username').value;
+        addUser(username);
+        document.getElementById('username').value = ''; // Limpiamos el campo del formulario
+      });
+
+      // Generamos la lista inicial al cargar la página
+      const userList = JSON.parse(localStorage.getItem('users')) || [];
+      const userHTML = userList.map((user) => `<li>${user}</li>`).join('');
+      document.getElementById('user-list').innerHTML = userHTML;
+    </script>
+  </body>
+</html>

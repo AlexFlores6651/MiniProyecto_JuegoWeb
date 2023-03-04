@@ -1,0 +1,49 @@
+html, body {
+    height: 100%;
+  }
+  
+  body {
+    background-image: url(../images/fondoAnime.jpg);
+    overflow: hidden;
+    max-height:100%;
+  }
+  
+  .wrapper {
+    overflow: hidden;
+    height: 400px;
+  }
+  .credit {
+    position: relative;
+    width: 400px;
+    font: 300 30px/1 'Open Sans Condensed', sans-serif;
+    text-align: center;
+    text-transform: uppercase;
+    color: red;
+    animation: 60s credits linear infinite;
+    display: inline;
+  }
+  
+  .movie {
+    margin-bottom: 50px;
+    font-size: 50px;
+  }
+  
+  .job {
+    margin-bottom: 5px;
+    font-size: 18px;
+  }
+  
+  .name {
+    margin-bottom: 50px;
+    font-size: 35px;
+  }
+  
+  @keyframes credits {
+    0% {
+        top: 100%;
+    }
+    100% {
+        top: -500%;
+    }
+  }
+     
