@@ -31,7 +31,7 @@ function guardarDatos(){
 
     const alerta = `
         <div class="alert alert-success alert-dismissible fade show" role="alert" style="text-align: center;">
-            <strong align="center">Felicidades !!  Tu Alias y tu Puntaje se han Guardado Exitosamente !!</strong>
+            <strong> Felicidades ${username} !!  Tu Alias y tu Puntaje se han Guardado Exitosamente !!</strong>
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     `;
