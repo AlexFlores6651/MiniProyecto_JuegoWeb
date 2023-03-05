@@ -31,11 +31,13 @@ function guardarDatos(){
 
     const alerta = `
         <div class="alert alert-success alert-dismissible fade show" role="alert">
-            <strong>Datos guardados exitosamente!</strong>
+            <strong>Felicidades !! Tu Alias y tu Puntaje se han guardado exitosamente</strong>
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     `;
 
     document.querySelector('#alertas').innerHTML = alerta;
-    window.location.href = 'inicio.html';
+    setTimeout(function() {
+        window.location.href = 'inicio.html';
+    }, 10000);
 }
