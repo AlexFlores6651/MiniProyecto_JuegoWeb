@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lista de usuarios</title>
+    <link rel="stylesheet" href="../css/estilos.css">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    <script src="https://kit.fontawesome.com/a7599d4d30.js" crossorigin="anonymous"></script>
+</head>
+  
+<body>
+
+    <section class="container">
+      <div class="video-container">
+        <video src="../Media/video.mp4" autoplay muted loop></video>
+    </div>
+    
+    <ul id="user-list">
+      <!-- La lista se generará aquí -->
+    </ul>
+
+    <div style="margin: 0 auto;">
+        <a href="inicio.html" class="boton" align="center"><i class="fa-solid fa-house"></i> Regresar</a>
+        <a href="#" class="boton" align="center" id="playButton"> <i class="fa-solid fa-volume-xmark"></i></a>
+    </div>
+
+
+    </section>
+
+    <script>      
+      // Generamos la lista inicial al cargar la página, ordenada por puntaje
+        const userList = JSON.parse(localStorage.getItem('usuarios')) || [];
+        const sortedList = userList.sort((a, b) => b.puntaje - a.puntaje);
+        const userHTML = sortedList.map((user) => `<li>${user.username} - Puntaje: ${user.puntaje} - Tiempo: ${user.tiempo}</li>`).join('');
+        document.getElementById('user-list').innerHTML = userHTML;
+    </script>
+    <script src="../js/audio.js"></script>
+  </body>
+</html>

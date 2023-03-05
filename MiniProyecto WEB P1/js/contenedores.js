@@ -144,6 +144,9 @@ function drop(ev) {
     destino.appendChild(elemento);
     console.log(`La imagen ${elemento.id} fue soltada en el espacio ${destino.id}`);
     contador+=100;
+
+    
+    
     if(elemento.id === "img1"){
       var a1 = new Audio('../Media/Correcto.mp3');
       var a2 = new Audio('../Media/Alucard.mp3');

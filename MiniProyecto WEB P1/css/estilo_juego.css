@@ -2,6 +2,11 @@ body{
   padding: 10px;
 }
 
+.form-width {
+  width: 60%;
+  margin: 0 auto;
+}
+
 .containerr {
   display: flex;
   flex-wrap: wrap;
