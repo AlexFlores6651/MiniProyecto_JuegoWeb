@@ -30,8 +30,8 @@ function guardarDatos(){
     localStorage.setItem('usuarios', JSON.stringify(usuarios));
 
     const alerta = `
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
-            <strong>Felicidades !! Tu Alias y tu Puntaje se han guardado exitosamente</strong>
+        <div class="alert alert-success alert-dismissible fade show" role="alert" style="text-align: center;">
+            <strong align="center">Felicidades !!  Tu Alias y tu Puntaje se han Guardado Exitosamente !!</strong>
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     `;
